@@ -80,8 +80,10 @@ class _LoginState extends State<Login> {
             padding: const EdgeInsets.all(15),
             child: TextField(
               controller: password,
+              //dinh dang kieu password
               obscureText: true,
               decoration: InputDecoration(
+                  //dinh dang textfield giong google
                   labelText: 'Password',
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(8))),

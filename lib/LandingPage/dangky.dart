@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:doantotnghiep/LandingPage/dangnhap.dart';
 import 'package:doantotnghiep/values/app_colors.dart';
+import 'package:doantotnghiep/values/app_style.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
@@ -48,82 +49,179 @@ class _RegisterState extends State<Register> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
+      body: SingleChildScrollView(
         child: Column(
-          verticalDirection: VerticalDirection.down,
-          children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.all(15),
-              child: Text(
-                'SIGN UP',
-                style: TextStyle(
-                    fontSize: 30,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.brown),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(15),
-              child: TextField(
-                controller: user,
-                decoration: InputDecoration(
-                    labelText: 'Username',
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(8))),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(15),
-              child: TextField(
-                controller: password,
-                obscureText: true,
-                decoration: InputDecoration(
-                    labelText: 'Password',
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(8))),
-              ),
-            ),
-            SizedBox(height: 20),
+          children: [
             Container(
-              padding: const EdgeInsets.all(15),
-              child: Row(
+              child: Column(
+                verticalDirection: VerticalDirection.down,
                 children: <Widget>[
-                  Expanded(
-                      child: MaterialButton(
-                    onPressed: () {
-                      register();
-                    },
-                    color: AppColor.mainColor,
+                  Padding(
+                    padding: const EdgeInsets.all(15),
                     child: Text(
-                      "Register",
+                      'Đăng ký',
                       style: TextStyle(
-                          fontSize: 20,
+                          fontSize: 30,
                           fontWeight: FontWeight.bold,
-                          color: Colors.white),
+                          color: Colors.brown),
                     ),
-                  )),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(15),
+                    child: Container(
+                      width: 220,
+                      height: 50,
+                      child: TextField(
+                        controller: user,
+                        decoration: InputDecoration(
+                            labelText: 'Username',
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(8))),
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                    child: Container(
+                      width: 220,
+                      height: 50,
+                      child: TextField(
+                        controller: password,
+                        obscureText: true,
+                        decoration: InputDecoration(
+                            labelText: 'Password',
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(8))),
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 10),
+                  Container(
+                    width: 220,
+                    padding: const EdgeInsets.all(15),
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: AppColor.mainColor,
+                      ),
+                      onPressed: () {
+                        register();
+                      },
+                      child: Text(
+                        "Đăng ký",
+                        style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white),
+                      ),
+                    ),
+                  ),
+                  Container(
+                    child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            "Đã có tài khoản ?",
+                          ),
+                          TextButton(
+                              onPressed: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => const Login()));
+                              },
+                              child: Text(
+                                "Đăng nhập",
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    color: AppColor.mainColor),
+                              ))
+                        ]),
+                  )
                 ],
               ),
             ),
+            SizedBox(
+              height: 10,
+            ),
             Container(
-              child:
-                  Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                Text(
-                  "Đã có tài khoản ?",
+              child: Text(
+                "Or",
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+              ),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Container(
+              child: Column(children: [
+                Container(
+                  width: 150,
+                  child: ElevatedButton.icon(
+                    icon: Icon(
+                      Icons.facebook,
+                      color: Colors.blue,
+                    ),
+                    style: ButtonStyle(
+                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                          RoundedRectangleBorder(
+                        // borderRadius: BorderRadius.circular(18.0),
+                        side: BorderSide(color: Colors.blue),
+                      )),
+                    ),
+                    onPressed: () {},
+                    label: Text(
+                      "Facebook",
+                      style: TextStyle(color: Colors.blue),
+                    ),
+                  ),
                 ),
-                TextButton(
-                    onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const Login()));
-                    },
-                    child: Text(
-                      "Đăng nhập",
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: AppColor.mainColor),
-                    ))
+                Container(
+                  width: 150,
+                  child: ElevatedButton.icon(
+                    icon: new Image.asset(
+                      "assets/icon/gmail.png",
+                      width: 20,
+                      height: 20,
+                    ),
+                    style: ButtonStyle(
+                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                          RoundedRectangleBorder(
+                        // borderRadius: BorderRadius.circular(18.0),
+                        side: BorderSide(color: Colors.red),
+                      )),
+                    ),
+                    onPressed: () {},
+                    label: Text(
+                      "Email",
+                      style: TextStyle(color: Colors.red),
+                    ),
+                  ),
+                ),
+                Container(
+                  width: 150,
+                  child: ElevatedButton.icon(
+                    icon: new Image.asset(
+                      "assets/icon/github.png",
+                      width: 30,
+                      height: 30,
+                    ),
+                    style: ButtonStyle(
+                        shape:
+                            MaterialStateProperty.all<RoundedRectangleBorder>(
+                                RoundedRectangleBorder(
+                          // borderRadius: BorderRadius.circular(18.0),
+                          side: BorderSide(color: Colors.black),
+                        )),
+                        foregroundColor:
+                            MaterialStateProperty.all(Colors.white)),
+                    onPressed: () {},
+                    label: Text(
+                      "Github",
+                      style: TextStyle(color: Colors.black),
+                    ),
+                  ),
+                )
               ]),
             )
           ],

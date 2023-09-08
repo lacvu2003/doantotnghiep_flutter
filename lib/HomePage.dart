@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:doantotnghiep/LandingPage/dangky.dart';
 import 'package:doantotnghiep/LandingPage/dangnhap.dart';
 import 'package:doantotnghiep/values/app_colors.dart';
@@ -20,14 +22,40 @@ class _HomePageState extends State<HomePage> {
     "5.png",
   ];
 
+  late Timer _timer;
+
   int _currentIndex = 0;
   PageController _pageController = new PageController();
+
+  void initState() {
+    super.initState();
+    _timer = Timer.periodic(Duration(seconds: 2), (Timer timer) {
+      if (_currentIndex < 4) {
+        _currentIndex++;
+      } else {
+        _currentIndex = 0;
+      }
+
+      _pageController.animateToPage(
+        _currentIndex,
+        duration: Duration(milliseconds: 350),
+        curve: Curves.ease,
+      );
+    });
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _timer?.cancel();
+  }
 
   @override
   Widget build(BuildContext context) {
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
     Size size = MediaQuery.of(context).size;
     return Scaffold(
+      backgroundColor: Colors.grey[200],
       body: Container(
         child: Column(
           children: [
@@ -83,7 +111,7 @@ class _HomePageState extends State<HomePage> {
                       width: double.maxFinite,
                       height: double.maxFinite,
                       decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(50),
+                          borderRadius: BorderRadius.circular(30),
                           image: DecorationImage(
                             image: AssetImage(
                                 "assets/image/imageapp/" + img[index]),
@@ -146,7 +174,8 @@ class _HomePageState extends State<HomePage> {
                             padding: const EdgeInsets.only(top: 0),
                             child: ElevatedButton(
                                 style: ElevatedButton.styleFrom(
-                                    foregroundColor: AppColor.mainColor),
+                                    foregroundColor: AppColor.mainColor,
+                                    backgroundColor: Colors.white),
                                 onPressed: () {
                                   Navigator.push(
                                       context,
