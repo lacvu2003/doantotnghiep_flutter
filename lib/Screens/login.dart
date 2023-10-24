@@ -1,39 +1,49 @@
 import 'dart:convert';
-
-import 'package:doantotnghiep/Screens/login.dart';
+import 'dart:math';
+// import 'package:doantotnghiep/AppPage/welcome.dart';
+// import 'package:doantotnghiep/LandingPage/dangky.dart';
+import 'package:doantotnghiep/Screens/home.dart';
+import 'package:doantotnghiep/Screens/landing.dart';
+import 'package:doantotnghiep/Screens/register.dart';
+import 'package:doantotnghiep/values/app_colors.dart';
+import 'package:doantotnghiep/widgets/bottomnavigationbar.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 
-class Register extends StatefulWidget {
-  const Register({super.key});
-
+class Login extends StatefulWidget {
+  const Login({super.key});
   @override
-  State<Register> createState() => _RegisterState();
+  State<Login> createState() => _LoginState();
 }
 
-class _RegisterState extends State<Register> {
+class _LoginState extends State<Login> {
   TextEditingController user = TextEditingController();
   TextEditingController password = TextEditingController();
-  Future register() async {
-    var url = "http://192.168.1.224/doantotnghiep/register.php";
+  Future login() async {
+    var url = "http://192.168.1.224/doantotnghiep/login.php";
     var response = await http.post(Uri.parse(url), body: {
       "username": user.text,
       "password": password.text,
     });
     var data = json.decode(response.body);
-    if (data == "Error") {
+    if (data == "ok") {
+      SharedPreferences preferences = await SharedPreferences.getInstance();
+      preferences.setString('username', user.text);
       Fluttertoast.showToast(
-          msg: "Tài khoản đã tồn tại",
+          msg: "Đăng nhập thành công",
           toastLength: Toast.LENGTH_SHORT,
           gravity: ToastGravity.CENTER,
           timeInSecForIosWeb: 1,
           backgroundColor: Colors.red,
           textColor: Colors.white,
           fontSize: 16.0);
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => const Bottom()));
     } else {
       Fluttertoast.showToast(
-          msg: "Đăng ký thành công",
+          msg: "Đăng nhập thất bại",
           toastLength: Toast.LENGTH_SHORT,
           gravity: ToastGravity.CENTER,
           timeInSecForIosWeb: 1,
@@ -56,7 +66,7 @@ class _RegisterState extends State<Register> {
                   Padding(
                     padding: const EdgeInsets.all(15),
                     child: Text(
-                      'Đăng ký',
+                      'Đăng nhập',
                       style: TextStyle(
                           fontSize: 30,
                           fontWeight: FontWeight.bold,
@@ -102,10 +112,10 @@ class _RegisterState extends State<Register> {
                         backgroundColor: Color.fromARGB(255, 47, 125, 121),
                       ),
                       onPressed: () {
-                        register();
+                        login();
                       },
                       child: Text(
-                        "Đăng ký",
+                        "Đăng nhập",
                         style: TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
@@ -118,17 +128,18 @@ class _RegisterState extends State<Register> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            "Đã có tài khoản ?",
+                            "Chưa có tài khoản ?",
                           ),
                           TextButton(
                               onPressed: () {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => const Login()));
+                                        builder: (context) =>
+                                            const Register()));
                               },
                               child: Text(
-                                "Đăng nhập",
+                                "Đăng ký",
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     color: Color.fromARGB(255, 47, 125, 121)),

@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:intl/intl.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -173,9 +174,9 @@ class _HomeState extends State<Home> {
         ),
         Positioned(
           top: 160,
-          left: 46,
+          left: 31,
           child: Container(
-            width: 320,
+            width: 350,
             height: 170,
             decoration: BoxDecoration(
                 boxShadow: [

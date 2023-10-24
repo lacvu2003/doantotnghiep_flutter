@@ -1,5 +1,6 @@
 import 'package:doantotnghiep/Screens/add.dart';
 import 'package:doantotnghiep/Screens/home.dart';
+import 'package:doantotnghiep/Screens/profile.dart';
 import 'package:doantotnghiep/Screens/statistics.dart';
 import 'package:flutter/material.dart';
 
@@ -12,7 +13,7 @@ class Bottom extends StatefulWidget {
 
 class _BottomState extends State<Bottom> {
   int index_color = 0;
-  List Screen = [Home(), Statistics(), Statistics(), Statistics()];
+  List Screen = [Home(), Statistics(), Statistics(), Profile()];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
