@@ -19,6 +19,11 @@ void main() async {
   SharedPreferences preferences = await SharedPreferences.getInstance();
   var user = preferences.getString('username');
   runApp(MaterialApp(
+    debugShowCheckedModeBanner: false,
+    theme: ThemeData(
+      fontFamily: 'mons',
+      useMaterial3: true,
+    ),
     home: user == null ? HomePage() : Bottom(),
   ));
 }
