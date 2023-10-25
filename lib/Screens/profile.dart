@@ -46,7 +46,7 @@ class _ProfileState extends State<Profile> {
             onPressed: () {
               logout();
             },
-            child: Text("Log out"),
+            child: Text("Đăng xuất"),
           )
         ],
       ),

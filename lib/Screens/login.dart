@@ -22,7 +22,7 @@ class _LoginState extends State<Login> {
   TextEditingController user = TextEditingController();
   TextEditingController password = TextEditingController();
   Future login() async {
-    var url = "http://192.168.1.224/doantotnghiep/login.php";
+    var url = "http://lacvu2003.000webhostapp.com/login.php";
     var response = await http.post(Uri.parse(url), body: {
       "username": user.text,
       "password": password.text,
@@ -36,7 +36,7 @@ class _LoginState extends State<Login> {
           toastLength: Toast.LENGTH_SHORT,
           gravity: ToastGravity.CENTER,
           timeInSecForIosWeb: 1,
-          backgroundColor: Colors.red,
+          backgroundColor: Color.fromARGB(255, 47, 125, 121),
           textColor: Colors.white,
           fontSize: 16.0);
       Navigator.push(
@@ -47,7 +47,7 @@ class _LoginState extends State<Login> {
           toastLength: Toast.LENGTH_SHORT,
           gravity: ToastGravity.CENTER,
           timeInSecForIosWeb: 1,
-          backgroundColor: Colors.red,
+          backgroundColor: Color.fromARGB(255, 47, 125, 121),
           textColor: Colors.white,
           fontSize: 16.0);
     }
@@ -64,19 +64,19 @@ class _LoginState extends State<Login> {
                 verticalDirection: VerticalDirection.down,
                 children: <Widget>[
                   Padding(
-                    padding: const EdgeInsets.all(15),
+                    padding: const EdgeInsets.all(50),
                     child: Text(
                       'Đăng nhập',
                       style: TextStyle(
                           fontSize: 30,
                           fontWeight: FontWeight.bold,
-                          color: Colors.brown),
+                          color: Color.fromARGB(255, 47, 125, 121)),
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.all(15),
+                    padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
                     child: Container(
-                      width: 220,
+                      width: 320,
                       height: 50,
                       child: TextField(
                         controller: user,
@@ -91,7 +91,7 @@ class _LoginState extends State<Login> {
                     padding:
                         const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
                     child: Container(
-                      width: 220,
+                      width: 320,
                       height: 50,
                       child: TextField(
                         controller: password,
@@ -103,9 +103,9 @@ class _LoginState extends State<Login> {
                       ),
                     ),
                   ),
-                  SizedBox(height: 10),
+                  SizedBox(height: 30),
                   Container(
-                    width: 220,
+                    width: 320,
                     padding: const EdgeInsets.all(15),
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
@@ -164,7 +164,7 @@ class _LoginState extends State<Login> {
             Container(
               child: Column(children: [
                 Container(
-                  width: 150,
+                  width: 320,
                   child: ElevatedButton.icon(
                     icon: Icon(
                       Icons.facebook,
@@ -184,8 +184,11 @@ class _LoginState extends State<Login> {
                     ),
                   ),
                 ),
+                SizedBox(
+              height: 20,
+            ),
                 Container(
-                  width: 150,
+                  width: 320,
                   child: ElevatedButton.icon(
                     icon: new Image.asset(
                       "assets/icon/gmail.png",
@@ -206,8 +209,11 @@ class _LoginState extends State<Login> {
                     ),
                   ),
                 ),
+                SizedBox(
+              height: 20,
+            ),
                 Container(
-                  width: 150,
+                  width: 320,
                   child: ElevatedButton.icon(
                     icon: new Image.asset(
                       "assets/icon/github.png",

@@ -6,12 +6,12 @@ List<money> geter() {
   upwork.name = 'dạy thêm';
   upwork.fee = '\đ 1,450,000';
   upwork.time = 'Hôm nay';
-  upwork.image = 'Education.png';
+  upwork.image = 'Học tập.png';
   upwork.buy = false;
   money starbucks = money();
   starbucks.buy = true;
   starbucks.fee = '\đ 100,000';
-  starbucks.image = 'Food.png';
+  starbucks.image = 'Ăn uống.png';
   starbucks.name = 'starbucks';
   starbucks.time = 'Hôm nay';
   return [upwork, starbucks];
