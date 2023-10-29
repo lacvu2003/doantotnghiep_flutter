@@ -64,17 +64,37 @@ class _LoginState extends State<Login> {
                 verticalDirection: VerticalDirection.down,
                 children: <Widget>[
                   Padding(
-                    padding: const EdgeInsets.all(50),
-                    child: Text(
-                      'Đăng nhập',
-                      style: TextStyle(
-                          fontSize: 30,
-                          fontWeight: FontWeight.bold,
-                          color: Color.fromARGB(255, 47, 125, 121)),
+                    padding: const EdgeInsets.all(15),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.of(context).pop();
+                          },
+                          child: Icon(
+                            Icons.arrow_back,
+                            color: Colors.black,
+                          ),
+                        ),
+                        Text(
+                          'Đăng nhập',
+                          style: TextStyle(
+                              fontSize: 30,
+                              fontWeight: FontWeight.bold,
+                              color: Color.fromARGB(255, 47, 125, 121)),
+                        ),
+                        Icon(
+                          Icons.attach_file_outlined,
+                          color: const Color.fromARGB(0, 255, 255, 255),
+                        )
+                      ],
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
                     child: Container(
                       width: 320,
                       height: 50,
@@ -185,8 +205,8 @@ class _LoginState extends State<Login> {
                   ),
                 ),
                 SizedBox(
-              height: 20,
-            ),
+                  height: 20,
+                ),
                 Container(
                   width: 320,
                   child: ElevatedButton.icon(
@@ -210,8 +230,8 @@ class _LoginState extends State<Login> {
                   ),
                 ),
                 SizedBox(
-              height: 20,
-            ),
+                  height: 20,
+                ),
                 Container(
                   width: 320,
                   child: ElevatedButton.icon(

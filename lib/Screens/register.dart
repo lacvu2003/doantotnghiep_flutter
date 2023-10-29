@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:doantotnghiep/Screens/home.dart';
+import 'package:doantotnghiep/Screens/landing.dart';
 import 'package:doantotnghiep/Screens/login.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -54,17 +56,40 @@ class _RegisterState extends State<Register> {
                 verticalDirection: VerticalDirection.down,
                 children: <Widget>[
                   Padding(
-                    padding: const EdgeInsets.all(50),
-                    child: Text(
-                      'Đăng ký',
-                      style: TextStyle(
-                          fontSize: 30,
-                          fontWeight: FontWeight.bold,
-                          color: Color.fromARGB(255, 47, 125, 121)),
+                    padding: const EdgeInsets.all(15),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const HomePage()));
+                          },
+                          child: Icon(
+                            Icons.arrow_back,
+                            color: Colors.black,
+                          ),
+                        ),
+                        Text(
+                          'Đăng ký',
+                          style: TextStyle(
+                              fontSize: 30,
+                              fontWeight: FontWeight.bold,
+                              color: Color.fromARGB(255, 47, 125, 121)),
+                        ),
+                        Icon(
+                          Icons.attach_file_outlined,
+                          color: const Color.fromARGB(0, 255, 255, 255),
+                        )
+                      ],
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
                     child: Container(
                       width: 320,
                       height: 50,
@@ -113,7 +138,6 @@ class _RegisterState extends State<Register> {
                       ),
                     ),
                   ),
-                  
                   Container(
                     child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -175,8 +199,8 @@ class _RegisterState extends State<Register> {
                   ),
                 ),
                 SizedBox(
-              height: 20,
-            ),
+                  height: 20,
+                ),
                 Container(
                   width: 320,
                   child: ElevatedButton.icon(
@@ -200,8 +224,8 @@ class _RegisterState extends State<Register> {
                   ),
                 ),
                 SizedBox(
-              height: 20,
-            ),
+                  height: 20,
+                ),
                 Container(
                   width: 320,
                   child: ElevatedButton.icon(
