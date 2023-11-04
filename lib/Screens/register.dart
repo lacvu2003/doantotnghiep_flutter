@@ -45,6 +45,9 @@ class _RegisterState extends State<Register> {
     }
   }
 
+  bool _validate = false;
+  bool _validatePass = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -92,13 +95,16 @@ class _RegisterState extends State<Register> {
                         const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
                     child: Container(
                       width: 320,
-                      height: 50,
+                      height: 80,
                       child: TextField(
                         controller: user,
                         decoration: InputDecoration(
-                            labelText: 'Username',
+                            labelText: 'Tài khoản',
                             border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(8))),
+                                borderRadius: BorderRadius.circular(8)),
+                            errorText: _validate
+                                ? "Tài khoản không được trống"
+                                : null),
                       ),
                     ),
                   ),
@@ -107,18 +113,21 @@ class _RegisterState extends State<Register> {
                         const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
                     child: Container(
                       width: 320,
-                      height: 50,
+                      height: 80,
                       child: TextField(
                         controller: password,
                         obscureText: true,
                         decoration: InputDecoration(
-                            labelText: 'Password',
+                            labelText: 'Mật khẩu',
                             border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(8))),
+                                borderRadius: BorderRadius.circular(8)),
+                            errorText: _validatePass
+                                ? "Mật khẩu không được trống"
+                                : null),
                       ),
                     ),
                   ),
-                  SizedBox(height: 30),
+                  SizedBox(height: 10),
                   Container(
                     width: 320,
                     padding: const EdgeInsets.all(15),
@@ -127,7 +136,23 @@ class _RegisterState extends State<Register> {
                         backgroundColor: Color.fromARGB(255, 47, 125, 121),
                       ),
                       onPressed: () {
-                        register();
+                        setState(() {
+                          if ((_validate = user.text.isEmpty) ||
+                              (_validatePass = password.text.isEmpty)) {
+                            Fluttertoast.showToast(
+                                msg: "Đăng ký không thành công",
+                                toastLength: Toast.LENGTH_SHORT,
+                                gravity: ToastGravity.CENTER,
+                                timeInSecForIosWeb: 1,
+                                backgroundColor:
+                                    Color.fromARGB(255, 47, 125, 121),
+                                textColor: Colors.white,
+                                fontSize: 16.0);
+                          } else {
+                            register();
+                          }
+                          // register();
+                        });
                       },
                       child: Text(
                         "Đăng ký",

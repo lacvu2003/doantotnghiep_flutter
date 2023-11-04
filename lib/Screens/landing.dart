@@ -112,7 +112,7 @@ class _HomePageState extends State<HomePage> {
                       width: double.maxFinite,
                       height: double.maxFinite,
                       decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(50),
+                          borderRadius: BorderRadius.circular(0),
                           // borderRadius: BorderRadius.circular(30),
                           image: DecorationImage(
                             image: AssetImage(

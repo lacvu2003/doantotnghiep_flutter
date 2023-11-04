@@ -18,7 +18,16 @@ class _Add_ScreenState extends State<Add_Screen> {
   FocusNode ex = FocusNode();
   final TextEditingController sotien = TextEditingController();
   FocusNode sotien_ = FocusNode();
-  final List<String> _item = ['Ăn uống', 'Giao dịch', 'Du lịch', 'Học tập','Hóa đơn nước','Hóa đơn điện','Mua sắm','Sức khỏe'];
+  final List<String> _item = [
+    'Ăn uống',
+    'Giao dịch',
+    'Du lịch',
+    'Học tập',
+    'Hóa đơn nước',
+    'Hóa đơn điện',
+    'Mua sắm',
+    'Sức khỏe'
+  ];
   final List<String> _itemei = ['Thu nhập', 'Chi tiêu'];
 
   @override
