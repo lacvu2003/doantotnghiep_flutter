@@ -1,5 +1,6 @@
 import 'package:doantotnghiep/Screens/add.dart';
 import 'package:doantotnghiep/Screens/home.dart';
+import 'package:doantotnghiep/Screens/news.dart';
 import 'package:doantotnghiep/Screens/profile.dart';
 import 'package:doantotnghiep/Screens/statistics.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +14,7 @@ class Bottom extends StatefulWidget {
 
 class _BottomState extends State<Bottom> {
   int index_color = 0;
-  List Screen = [Home(), Statistics(), Statistics(), Profile()];
+  List Screen = [Home(), Statistics(), News(), Profile()];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -77,7 +78,7 @@ class _BottomState extends State<Bottom> {
                   });
                 },
                 child: Icon(
-                  Icons.account_balance_wallet,
+                  Icons.newspaper,
                   size: 30,
                   color: index_color == 2
                       ? Color.fromARGB(255, 47, 125, 121)

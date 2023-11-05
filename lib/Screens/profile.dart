@@ -1,7 +1,13 @@
 import 'package:doantotnghiep/Screens/introduce.dart';
 import 'package:doantotnghiep/Screens/landing.dart';
+import 'package:doantotnghiep/Screens/update_profile.dart';
+import 'package:doantotnghiep/values/app_colors.dart';
+import 'package:doantotnghiep/values/images_string.dart';
+import 'package:doantotnghiep/values/text_strings.dart';
+import 'package:doantotnghiep/widgets/bottomnavigationbar.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
 
 class Profile extends StatefulWidget {
   const Profile({super.key});
@@ -21,7 +27,7 @@ class _ProfileState extends State<Profile> {
 
   Future logout() async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
-    preferences.remove('username');
+    preferences.remove('fullname');
     Navigator.push(
         context, MaterialPageRoute(builder: (context) => HomePage()));
   }
@@ -35,46 +41,53 @@ class _ProfileState extends State<Profile> {
 
   @override
   Widget build(BuildContext context) {
+    var isDark = MediaQuery.of(context).platformBrightness == Brightness.dark;
     return Scaffold(
-      body: Column(
-        // mainAxisAlignment: MainAxisAlignment.center,
-        // crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Container(
-            margin: EdgeInsets.all(50),
-            // width: double.infinity,
-            // height: 150,
-            // decoration: BoxDecoration(
-            //     color: Colors.white,
-            //     borderRadius: BorderRadius.only(
-            //         bottomLeft: Radius.circular(20),
-            //         bottomRight: Radius.circular(20)),
-            //     boxShadow: [
-            //       BoxShadow(
-            //         color: Colors.grey.withOpacity(0.5),
-            //         spreadRadius: 5,
-            //         blurRadius: 7,
-            //         offset: Offset(0, 3),
-            //       )
-            //     ]),
-            child: Padding(
-              padding: const EdgeInsets.all(15),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
+      appBar: AppBar(
+        titleSpacing: 0,
+        elevation: 2,
+        primary: false,
+        leading: IconButton(onPressed: () { Navigator.push(context,MaterialPageRoute(builder: (context) => const Bottom()),);}, icon: const Icon(Icons.arrow_back),),
+        title: Text(tProfile, style: Theme.of(context).textTheme.headlineMedium),
+        actions: [
+          IconButton(onPressed: (){}, icon: Icon(isDark? Icons.sunny : Icons.nights_stay_outlined)),
+        ],
+      ),
+      body: SingleChildScrollView(
+        child: Container(
+          margin: const EdgeInsets.only(
+            top: 20,
+            left: 10,
+            right: 10,
+          ),
+          child: Column(
+            children: [
+              Stack(
                 children: [
-                  Container(
-                    width: 50,
-                    child: Image.asset('images/user.png'),
-                  ),
                   SizedBox(
-                    height: 15,
+                    width: 150,
+                    height: 150,
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(100),child: const Image(image: AssetImage(tProfileImage1))),
                   ),
-                  Container(
-                      child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      user == ''
+                  Positioned(
+                    bottom: 0,
+                    right: 0,
+
+                    child: Container(
+                      width: 30, height: 30,
+                      decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(100),
+                      color: AppColor.mainColor.withOpacity(0.1),
+                    ),
+                    child: Icon(Icons.edit,size: 18, color: AppColor.mainColor,),
+                                  ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 10),
+              const Text(tProfileHeading, style: TextStyle(decoration: TextDecoration.underline,),),
+              user == ''
                           ? Text('')
                           : Text(
                               user,
@@ -83,94 +96,94 @@ class _ProfileState extends State<Profile> {
                                   fontWeight: FontWeight.w400,
                                   fontSize: 20),
                             ),
-                      Text('Thành viên bạc'),
-                      SizedBox(
-                        height: 20,
-                      ),
-                      Divider(
-                        color: Color.fromARGB(255, 0, 0, 0),
-                      )
-                    ],
-                  ))
-                ],
-              ),
-            ),
-          ),
-          SizedBox(
-            height: 350,
-          ),
-          Column(
-            children: [
-              Container(
-                margin: EdgeInsets.only(left: 15),
-                width: double.infinity,
-                height: 120,
-                child: Column(children: [
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => Introduce()));
-                    },
-                    child: Row(
-                      children: [
-                        Container(
-                          child: Image.asset('images/gioithieu.png'),
-                          width: 40,
-                        ),
-                        SizedBox(
-                          width: 20,
-                        ),
-                        Text(
-                          "Giới thiệu",
-                          style: TextStyle(
-                              fontSize: 18, fontWeight: FontWeight.w400),
-                        ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Container(
-                    width: 300,
-                    child: Column(
-                      children: [
-                        Divider(
-                          color: const Color.fromARGB(76, 0, 0, 0),
-                        )
-                      ],
-                    ),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      logout();
-                    },
-                    child: Row(
-                      children: [
-                        Container(
-                          child: Image.asset('images/logout.png'),
-                          width: 40,
-                        ),
-                        SizedBox(
-                          width: 20,
-                        ),
-                        Text(
-                          "Đăng xuất",
-                          style: TextStyle(
-                              fontSize: 18, fontWeight: FontWeight.w400),
-                        )
-                      ],
-                    ),
-                  ),
-                ]),
-              ),
+              const SizedBox(height: 10),
+              SizedBox(width: 200, child: ElevatedButton(onPressed:() {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const UpdateProfile(),))
+              ;}, child: const Text(tEditProfile, style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: AppColor.mainColor,
+                side: BorderSide.none,
+                shape: StadiumBorder(),
+              ),)),
+              const SizedBox(height: 10),
+              const Divider(color: Color(0xFFF6F4F4),thickness: 2,),
+              const SizedBox(height: 10),
+              PreferencesMenuWidget(
+                title: tMenu1,
+                icon: Icons.settings,
+                textColor: Colors.black,
+                endIcon: true,
+                onPress: () {},),
+                PreferencesMenuWidget(
+                title: tMenu2,
+                icon: Icons.receipt,
+                textColor: Colors.black,
+                endIcon: true,
+                onPress: () {},),
+                PreferencesMenuWidget(
+                title: tMenu3,
+                icon: Icons.manage_accounts,
+                textColor: Colors.black,
+                endIcon: true,
+                onPress: () {},),
+                const SizedBox(height: 10,),
+                const Divider(color: Color(0xFFF6F4F4),thickness: 2,),
+                const SizedBox(height: 10,),
+                PreferencesMenuWidget(
+                title: tMenu4,
+                icon: Icons.info_outline,
+                textColor: Colors.black,
+                endIcon: true,
+                onPress: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => Introduce(),));
+                },),
+                PreferencesMenuWidget(
+                title: 'Logout',
+                icon: Icons.logout_outlined,
+                textColor: Colors.black,
+                endIcon: true,
+                onPress:() {logout();},),
             ],
-          )
-        ],
+          ),
+        ),
       ),
+    
+    );
+  }
+}
+
+class PreferencesMenuWidget extends StatelessWidget {
+  const PreferencesMenuWidget({
+    super.key, required this.title, required this.icon, required this.onPress, this.endIcon = true, this.textColor,
+  });
+  final String title;
+  final IconData icon;
+  final VoidCallback onPress;
+  final bool endIcon;
+  final Color? textColor;
+
+  @override
+  Widget build(BuildContext context) {
+    var isDark = MediaQuery.of(context).platformBrightness == Brightness.dark;
+    var iconColor = isDark ? AppColor.mainColor : Colors.accents;
+    return ListTile(
+      onTap: onPress,
+      leading: Container(
+        width: 30, height: 30,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(100),
+          color: AppColor.mainColor.withOpacity(0.1),
+        ),
+        child: Icon(icon, color: AppColor.mainColor,),
+      ),
+      title: Text(title, style: Theme.of(context).textTheme.bodyMedium?.apply(color: textColor),),
+      trailing: endIcon? Container(
+        width: 30, height: 30,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(100),
+          color: AppColor.mainColor.withOpacity(0.1),
+        ),
+        child: const Icon(Icons.keyboard_arrow_right, size: 25.0,color: AppColor.mainColor,)):null,
     );
   }
 }

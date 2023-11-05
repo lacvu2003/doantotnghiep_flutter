@@ -19,13 +19,16 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+  TextEditingController fullname = TextEditingController();
   TextEditingController user = TextEditingController();
   TextEditingController password = TextEditingController();
   Future login() async {
     var url = "http://lacvu2003.000webhostapp.com/login.php";
     var response = await http.post(Uri.parse(url), body: {
+      "fullname": fullname.text,
       "username": user.text,
       "password": password.text,
+
     });
     var data = json.decode(response.body);
     if (data == "ok") {

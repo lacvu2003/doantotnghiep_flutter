@@ -15,11 +15,13 @@ class Register extends StatefulWidget {
 }
 
 class _RegisterState extends State<Register> {
+  TextEditingController fullname = TextEditingController();
   TextEditingController user = TextEditingController();
   TextEditingController password = TextEditingController();
   Future register() async {
     var url = "http://lacvu2003.000webhostapp.com/register.php";
     var response = await http.post(Uri.parse(url), body: {
+      "fullname": fullname.text,
       "username": user.text,
       "password": password.text,
     });
@@ -45,6 +47,7 @@ class _RegisterState extends State<Register> {
     }
   }
 
+  bool _validateName = false;
   bool _validate = false;
   bool _validatePass = false;
 
@@ -97,6 +100,24 @@ class _RegisterState extends State<Register> {
                       width: 320,
                       height: 80,
                       child: TextField(
+                        controller: fullname,
+                        decoration: InputDecoration(
+                            labelText: 'Họ và tên',
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(8)),
+                            errorText: _validateName
+                                ? "Họ và tên không được trống"
+                                : null),
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                    child: Container(
+                      width: 320,
+                      height: 80,
+                      child: TextField(
                         controller: user,
                         decoration: InputDecoration(
                             labelText: 'Tài khoản',
@@ -137,7 +158,7 @@ class _RegisterState extends State<Register> {
                       ),
                       onPressed: () {
                         setState(() {
-                          if ((_validate = user.text.isEmpty) ||
+                          if ((_validateName = fullname.text.isEmpty) || (_validate = user.text.isEmpty) ||
                               (_validatePass = password.text.isEmpty)) {
                             Fluttertoast.showToast(
                                 msg: "Đăng ký không thành công",
