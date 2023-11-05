@@ -28,7 +28,6 @@ class _LoginState extends State<Login> {
       "fullname": fullname.text,
       "username": user.text,
       "password": password.text,
-
     });
     var data = json.decode(response.body);
     if (data == "ok") {
@@ -39,7 +38,7 @@ class _LoginState extends State<Login> {
           toastLength: Toast.LENGTH_SHORT,
           gravity: ToastGravity.CENTER,
           timeInSecForIosWeb: 1,
-          backgroundColor: Color.fromARGB(255, 47, 125, 121),
+          backgroundColor: AppColor.mainColor,
           textColor: Colors.white,
           fontSize: 16.0);
       Navigator.push(
@@ -50,7 +49,7 @@ class _LoginState extends State<Login> {
           toastLength: Toast.LENGTH_SHORT,
           gravity: ToastGravity.CENTER,
           timeInSecForIosWeb: 1,
-          backgroundColor: Color.fromARGB(255, 47, 125, 121),
+          backgroundColor: AppColor.mainColor,
           textColor: Colors.white,
           fontSize: 16.0);
     }
@@ -89,7 +88,7 @@ class _LoginState extends State<Login> {
                           style: TextStyle(
                               fontSize: 30,
                               fontWeight: FontWeight.bold,
-                              color: Color.fromARGB(255, 47, 125, 121)),
+                              color: AppColor.mainColor),
                         ),
                         Icon(
                           Icons.attach_file_outlined,
@@ -141,7 +140,7 @@ class _LoginState extends State<Login> {
                     padding: const EdgeInsets.all(15),
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Color.fromARGB(255, 47, 125, 121),
+                        backgroundColor: AppColor.mainColor,
                       ),
                       onPressed: () {
                         setState(() {
@@ -189,7 +188,7 @@ class _LoginState extends State<Login> {
                                 "Đăng ký",
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold,
-                                    color: Color.fromARGB(255, 47, 125, 121)),
+                                    color: AppColor.mainColor),
                               ))
                         ]),
                   )

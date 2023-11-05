@@ -3,6 +3,7 @@ import 'package:doantotnghiep/Screens/home.dart';
 import 'package:doantotnghiep/Screens/news.dart';
 import 'package:doantotnghiep/Screens/profile.dart';
 import 'package:doantotnghiep/Screens/statistics.dart';
+import 'package:doantotnghiep/values/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class Bottom extends StatefulWidget {
@@ -28,7 +29,7 @@ class _BottomState extends State<Bottom> {
           Icons.add,
           color: Colors.white,
         ),
-        backgroundColor: Color.fromARGB(255, 47, 125, 121),
+        backgroundColor: AppColor.mainColor,
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(50))),
       ),
@@ -49,9 +50,7 @@ class _BottomState extends State<Bottom> {
                 child: Icon(
                   Icons.home,
                   size: 30,
-                  color: index_color == 0
-                      ? Color.fromARGB(255, 47, 125, 121)
-                      : Colors.grey,
+                  color: index_color == 0 ? AppColor.mainColor : Colors.grey,
                 ),
               ),
               GestureDetector(
@@ -63,9 +62,7 @@ class _BottomState extends State<Bottom> {
                 child: Icon(
                   Icons.bar_chart_outlined,
                   size: 30,
-                  color: index_color == 1
-                      ? Color.fromARGB(255, 47, 125, 121)
-                      : Colors.grey,
+                  color: index_color == 1 ? AppColor.mainColor : Colors.grey,
                 ),
               ),
               SizedBox(
@@ -80,9 +77,7 @@ class _BottomState extends State<Bottom> {
                 child: Icon(
                   Icons.newspaper,
                   size: 30,
-                  color: index_color == 2
-                      ? Color.fromARGB(255, 47, 125, 121)
-                      : Colors.grey,
+                  color: index_color == 2 ? AppColor.mainColor : Colors.grey,
                 ),
               ),
               GestureDetector(
@@ -94,9 +89,7 @@ class _BottomState extends State<Bottom> {
                   child: Icon(
                     Icons.person_outline,
                     size: 30,
-                    color: index_color == 3
-                        ? Color.fromARGB(255, 47, 125, 121)
-                        : Colors.grey,
+                    color: index_color == 3 ? AppColor.mainColor : Colors.grey,
                   ))
             ],
           ),

@@ -16,13 +16,19 @@ class UpdateProfile extends StatelessWidget {
         primary: false,
         leading: IconButton(
           onPressed: () {
-          Navigator.pop(context);},
-           icon: Icon(Icons.arrow_back),),
-        title: Text(tEditProfile, style: Theme.of(context).textTheme.headlineMedium,),
+            Navigator.pop(context);
+          },
+          icon: Icon(Icons.arrow_back),
+        ),
+        title: Text(
+          tEditProfile,
+          style: TextStyle(fontWeight: FontWeight.w600, fontSize: 25),
+        ),
+        centerTitle: true,
       ),
       body: SingleChildScrollView(
         child: Container(
-         margin: const EdgeInsets.only(
+          margin: const EdgeInsets.only(
             top: 20,
             left: 10,
             right: 10,
@@ -35,44 +41,66 @@ class UpdateProfile extends StatelessWidget {
                     width: 150,
                     height: 150,
                     child: ClipRRect(
-                      borderRadius: BorderRadius.circular(100),child: const Image(image: AssetImage(tProfileImage1))),
+                        borderRadius: BorderRadius.circular(100),
+                        child: const Image(image: AssetImage(tProfileImage1))),
                   ),
                   Positioned(
                     bottom: 0,
                     right: 0,
                     child: Container(
-                      width: 30, height: 30,
+                      width: 30,
+                      height: 30,
                       decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(100),
-                      color: AppColor.mainColor.withOpacity(0.1),
+                        borderRadius: BorderRadius.circular(100),
+                        color: AppColor.mainColor.withOpacity(0.1),
+                      ),
+                      child: Icon(
+                        Icons.settings,
+                        size: 18,
+                        color: AppColor.mainColor,
+                      ),
                     ),
-                    child: Icon(Icons.settings,size: 18, color: AppColor.mainColor,),),),],
-                    ),
-              const SizedBox(height: 50,),
+                  ),
+                ],
+              ),
+              const SizedBox(
+                height: 50,
+              ),
               Form(
-                child: Column(children: [
+                  child: Column(
+                children: [
                   TextFormField(
-                    decoration: const InputDecoration(
-                      label: Text("Full Name"),
-                      prefixIcon: Icon(Icons.person,),)
+                      decoration: const InputDecoration(
+                    label: Text("Full Name"),
+                    prefixIcon: Icon(
+                      Icons.person,
+                    ),
+                  )),
+                  const SizedBox(
+                    height: 20,
                   ),
-                  const SizedBox(height: 20,),
                   TextFormField(
-                    decoration: const InputDecoration(label: Text("Email"),prefixIcon: Icon(Icons.email_outlined))
+                      decoration: const InputDecoration(
+                          label: Text("Email"),
+                          prefixIcon: Icon(Icons.email_outlined))),
+                  const SizedBox(
+                    height: 20,
                   ),
-                  const SizedBox(height: 20,),
                   TextFormField(
-                    decoration: const InputDecoration(label: Text("Phone No."),prefixIcon: Icon(Icons.phone_android))
+                      decoration: const InputDecoration(
+                          label: Text("Phone No."),
+                          prefixIcon: Icon(Icons.phone_android))),
+                  const SizedBox(
+                    height: 20,
                   ),
-                  const SizedBox(height: 20,),
                   TextFormField(
-                    decoration: const InputDecoration(label: Text("Password"),prefixIcon: Icon(Icons.fingerprint_rounded))
-                  ),
+                      decoration: const InputDecoration(
+                          label: Text("Password"),
+                          prefixIcon: Icon(Icons.fingerprint_rounded))),
                 ],
               ))
             ],
           ),
-
         ),
       ),
     );

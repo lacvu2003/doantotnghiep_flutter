@@ -1,7 +1,9 @@
 import 'package:doantotnghiep/data/listdata.dart';
 import 'package:doantotnghiep/data/model/add_date.dart';
 import 'package:doantotnghiep/data/utlity.dart';
+import 'package:doantotnghiep/values/app_colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:intl/intl.dart';
@@ -46,6 +48,7 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
     return Scaffold(
       body: SafeArea(
         child: ValueListenableBuilder(
@@ -64,7 +67,7 @@ class _HomeState extends State<Home> {
                                   width: double.infinity,
                                   height: 240,
                                   decoration: BoxDecoration(
-                                      color: Color(0xff368983),
+                                      color: AppColor.mainColor,
                                       borderRadius: BorderRadius.only(
                                           bottomLeft: Radius.circular(20),
                                           bottomRight: Radius.circular(20))),
@@ -146,7 +149,8 @@ class _HomeState extends State<Home> {
                                         spreadRadius: 6,
                                       ),
                                     ],
-                                    color: Color.fromARGB(255, 47, 125, 121),
+                                    color:
+                                        const Color.fromARGB(255, 20, 88, 20),
                                     borderRadius: BorderRadius.circular(15)),
                                 child: Column(children: [
                                   SizedBox(
@@ -345,9 +349,8 @@ class _HomeState extends State<Home> {
           style: TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.w600,
-              color: history.IN == 'Thu nhập'
-                  ? Color.fromARGB(255, 47, 125, 121)
-                  : Colors.red)),
+              color:
+                  history.IN == 'Thu nhập' ? AppColor.mainColor : Colors.red)),
     );
   }
 

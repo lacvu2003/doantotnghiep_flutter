@@ -1,4 +1,5 @@
 import 'package:doantotnghiep/data/model/add_date.dart';
+import 'package:doantotnghiep/values/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 
@@ -105,7 +106,7 @@ class _Add_ScreenState extends State<Add_Screen> {
       child: Container(
         alignment: Alignment.center,
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(15), color: Color(0xff368983)),
+            borderRadius: BorderRadius.circular(15), color: AppColor.mainColor),
         width: 120,
         height: 50,
         child: Text(
@@ -322,7 +323,7 @@ class _Add_ScreenState extends State<Add_Screen> {
           width: double.infinity,
           height: 240,
           decoration: BoxDecoration(
-              color: Color(0xff368983),
+              color: AppColor.mainColor,
               borderRadius: BorderRadius.only(
                   bottomLeft: Radius.circular(20),
                   bottomRight: Radius.circular(20))),

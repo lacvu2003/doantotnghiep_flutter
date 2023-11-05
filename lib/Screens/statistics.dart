@@ -1,6 +1,7 @@
 import 'package:doantotnghiep/data/model/add_date.dart';
 import 'package:doantotnghiep/data/top.dart';
 import 'package:doantotnghiep/data/utlity.dart';
+import 'package:doantotnghiep/values/app_colors.dart';
 import 'package:doantotnghiep/widgets/chart.dart';
 import 'package:flutter/material.dart';
 
@@ -44,7 +45,7 @@ class _StatisticsState extends State<Statistics> {
               "Biểu đồ thu chi",
               style: TextStyle(
                   color: Colors.black,
-                  fontSize: 20,
+                  fontSize: 25,
                   fontWeight: FontWeight.w700),
             ),
             SizedBox(
@@ -69,7 +70,7 @@ class _StatisticsState extends State<Statistics> {
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
                             color: index_color == index
-                                ? Color.fromARGB(255, 47, 125, 121)
+                                ? AppColor.mainColor
                                 : Colors.white),
                         alignment: Alignment.center,
                         child: Text(day[index],

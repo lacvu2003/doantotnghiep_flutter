@@ -1,4 +1,3 @@
-
 import 'package:doantotnghiep/values/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/link.dart';
@@ -14,8 +13,14 @@ class _NewsState extends State<News> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Tin tức',style: TextStyle(fontWeight: FontWeight.w600,fontSize: 25),),centerTitle: true,),
-        body: Center(
+      appBar: AppBar(
+        title: Text(
+          'Tin tức',
+          style: TextStyle(fontWeight: FontWeight.w600, fontSize: 25),
+        ),
+        centerTitle: true,
+      ),
+      body: Center(
         child: Container(
           constraints: const BoxConstraints(maxWidth: 400),
           child: ListView.builder(
@@ -101,7 +106,8 @@ class Article {
 
 final List<Article> _articles = [
   Article(
-    title: "Chứng khoán có phiên tăng vọt, vì sao vẫn khó hi vọng phục hồi mạnh?",
+    title:
+        "Chứng khoán có phiên tăng vọt, vì sao vẫn khó hi vọng phục hồi mạnh?",
     author: "BÌNH KHÁNH",
     imageUrl: "",
     postedOn: "Hôm nay",

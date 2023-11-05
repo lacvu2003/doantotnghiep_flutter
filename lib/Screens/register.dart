@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:doantotnghiep/Screens/home.dart';
 import 'package:doantotnghiep/Screens/landing.dart';
 import 'package:doantotnghiep/Screens/login.dart';
+import 'package:doantotnghiep/values/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
@@ -32,7 +33,7 @@ class _RegisterState extends State<Register> {
           toastLength: Toast.LENGTH_SHORT,
           gravity: ToastGravity.CENTER,
           timeInSecForIosWeb: 1,
-          backgroundColor: Color.fromARGB(255, 47, 125, 121),
+          backgroundColor: AppColor.mainColor,
           textColor: Colors.white,
           fontSize: 16.0);
     } else {
@@ -41,7 +42,7 @@ class _RegisterState extends State<Register> {
           toastLength: Toast.LENGTH_SHORT,
           gravity: ToastGravity.CENTER,
           timeInSecForIosWeb: 1,
-          backgroundColor: Color.fromARGB(255, 47, 125, 121),
+          backgroundColor: AppColor.mainColor,
           textColor: Colors.white,
           fontSize: 16.0);
     }
@@ -84,7 +85,7 @@ class _RegisterState extends State<Register> {
                           style: TextStyle(
                               fontSize: 30,
                               fontWeight: FontWeight.bold,
-                              color: Color.fromARGB(255, 47, 125, 121)),
+                              color: AppColor.mainColor),
                         ),
                         Icon(
                           Icons.attach_file_outlined,
@@ -154,11 +155,12 @@ class _RegisterState extends State<Register> {
                     padding: const EdgeInsets.all(15),
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Color.fromARGB(255, 47, 125, 121),
+                        backgroundColor: AppColor.mainColor,
                       ),
                       onPressed: () {
                         setState(() {
-                          if ((_validateName = fullname.text.isEmpty) || (_validate = user.text.isEmpty) ||
+                          if ((_validateName = fullname.text.isEmpty) ||
+                              (_validate = user.text.isEmpty) ||
                               (_validatePass = password.text.isEmpty)) {
                             Fluttertoast.showToast(
                                 msg: "Đăng ký không thành công",
@@ -202,7 +204,7 @@ class _RegisterState extends State<Register> {
                                 "Đăng nhập",
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold,
-                                    color: Color.fromARGB(255, 47, 125, 121)),
+                                    color: AppColor.mainColor),
                               ))
                         ]),
                   )
