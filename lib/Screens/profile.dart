@@ -26,7 +26,7 @@ class _ProfileState extends State<Profile> {
 
   Future logout() async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
-    preferences.remove('fullname');
+    preferences.remove('username');
     Navigator.push(
         context, MaterialPageRoute(builder: (context) => HomePage()));
   }
