@@ -46,15 +46,6 @@ class _ProfileState extends State<Profile> {
         titleSpacing: 0,
         elevation: 2,
         primary: false,
-        leading: IconButton(
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => const Bottom()),
-            );
-          },
-          icon: const Icon(Icons.arrow_back),
-        ),
         title: Text(tProfile,
             style: TextStyle(fontWeight: FontWeight.w600, fontSize: 25)),
         centerTitle: true,
