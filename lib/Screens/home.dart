@@ -341,9 +341,16 @@ class _HomeState extends State<Home> {
         history.name,
         style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
       ),
-      subtitle: Text(
-        '${day[history.datetime.weekday - 1]}  ${history.datetime.year}-${history.datetime.day}-${history.datetime.month}',
-        style: TextStyle(fontWeight: FontWeight.w600),
+      subtitle: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            '${day[history.datetime.weekday - 1]}  ${history.datetime.day}-${history.datetime.month}-${history.datetime.year}',
+            style: TextStyle(fontWeight: FontWeight.w600),
+          ),
+          Text(history.explain)
+        ],
       ),
       trailing: Text(history.amount,
           style: TextStyle(

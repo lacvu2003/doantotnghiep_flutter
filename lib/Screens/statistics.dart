@@ -159,7 +159,7 @@ class _StatisticsState extends State<Statistics> {
               title: Text(a[index].name,
                   style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600)),
               subtitle: Text(
-                  ' ${a[index].datetime.year}-${a[index].datetime.day}-${a[index].datetime.month}',
+                  ' ${a[index].datetime.day}-${a[index].datetime.month}-${a[index].datetime.year}',
                   style: TextStyle(fontWeight: FontWeight.w600)),
               trailing: Text(a[index].amount,
                   style: TextStyle(

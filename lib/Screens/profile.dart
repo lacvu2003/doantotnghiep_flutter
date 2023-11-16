@@ -190,7 +190,7 @@ class _ProfileState extends State<Profile> {
                 },
               ),
               PreferencesMenuWidget(
-                title: 'Logout',
+                title: 'Đăng xuất',
                 icon: Icons.logout_outlined,
                 textColor: Colors.black,
                 endIcon: true,
